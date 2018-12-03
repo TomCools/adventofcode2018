@@ -19,6 +19,7 @@ public class Day3 {
         getClaims().forEach(field::claimField);
 
         System.out.println("Amount of overlaps: " + field.overlaps);
+
         //field.print();
     }
 
@@ -36,16 +37,19 @@ public class Day3 {
                     if(field[x][y] == -1) {
                         // Already duplicate
                     } else if(field[x][y] != 0) {
+                        // This field has been claimed before, so it is now overlapping
                         field[x][y] = -1;
                         overlaps++;
                     }
                     else {
+                        // unclaimed field.
                         field[x][y] = claim.number;
                     }
                 }
             }
         }
 
+        // For fun :3
         public void print() {
             for (int y = 0; y < field[0].length; y++) {
                 for(int x = 0; x < field.length; x++) {
@@ -53,9 +57,7 @@ public class Day3 {
                 }
                 System.out.println();
             }
-
         }
-
 
     }
 
